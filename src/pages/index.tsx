@@ -1,12 +1,26 @@
 import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
-import { Button } from "@/components/atoms/Button/Button";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Button } from "@/components/Button/Button";
+import router from "next/router";
+import { useShopContext } from "@/context/shop";
+import { useUtilityContext } from "@/context/utility";
+import { Loading } from "@/components/Loading/Loading";
 
 export default function Home() {
+  const { setCurrentShop } = useShopContext();
+  const { isLoadingShow, lodingShow, lodingHide } = useUtilityContext();
+  const hundleClick = async (genre: string) => {
+    try {
+      lodingShow();
+      await setCurrentShop(genre);
+      router.push("/list");
+      lodingHide();
+    } catch (error) {
+      console.log("失敗");
+      console.log(error);
+      lodingHide();
+    }
+  };
+
   return (
     <>
       <Head>
@@ -16,7 +30,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Button onClick={() => console.log("a")}>検索</Button>
+        <div className="h-screen w-screen flex justify-center items-center">
+          {isLoadingShow ? (
+            <Loading />
+          ) : (
+            <div className="flex justify-between w-10/12">
+              <Button onClick={() => hundleClick("G001")}>居酒屋</Button>
+              <Button onClick={() => hundleClick("G012")}>バー</Button>
+            </div>
+          )}
+        </div>
       </main>
     </>
   );
