@@ -41,7 +41,8 @@ function list() {
       router.push("/");
     }
   }, []);
-
+  console.log("shops");
+  console.log(shops);
   return (
     <>
       {shops.map((shop: TypeShopList, index: number) => (
