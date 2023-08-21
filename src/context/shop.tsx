@@ -5,6 +5,7 @@
 import apiClient from "@/lib/apiClient";
 import React, { ReactNode, useContext, useState } from "react";
 import { useCurrentLocation } from "@/hooks/location";
+import { useShopSearch } from "@/hooks/shop";
 
 /**
  * 店舗リストの型
@@ -62,10 +63,7 @@ export const ShopProvider = ({ children }: ShopProviderProps) => {
     if (typeof location === "string") {
       throw Error(location);
     }
-    const response = await apiClient.get(
-      `/shopList?lat=${location.lat}&lng=${location.lng}&genre=${genre}`
-    );
-    setShops(response.data);
+    setShops(await useShopSearch(location.lat, location.lng, genre));
   };
 
   const value = {
