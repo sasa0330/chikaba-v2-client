@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 
 type Props = {
-  onClick: () => any;
-  children: ReactNode;
+  onClick?: () => void;
+  children?: ReactNode;
 };
 
 export const Button = (props: Props) => {
