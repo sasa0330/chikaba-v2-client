@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import Image from "next/image";
 
 type Props = {
   imgAttr: {
@@ -11,11 +12,11 @@ export const Card = (props: Props) => {
   const { imgAttr, contents } = props;
   return (
     <div className="flex items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-1">
-      <img
+      <Image
         className="object-cover rounded-t-lg w-1/3"
         src={imgAttr.src}
         alt={imgAttr.alt}
-      ></img>
+      ></Image>
       <div className="object-cover rounded-t-lg w-2/3 ml-2">{contents}</div>
     </div>
   );

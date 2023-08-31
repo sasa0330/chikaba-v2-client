@@ -1,6 +1,7 @@
 import { useShopContext } from "@/context/shop";
 import type { NextPage } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 type TypeShopList = {
   // 店舗ID
@@ -46,7 +47,7 @@ const StatusPage: NextPage = () => {
   return (
     <>
       <div>
-        <img src={currentShop.photo} alt="" />
+        <Image src={currentShop.photo} alt="" />
       </div>
       <div>このページのIDは{currentShop.itemId}です。</div>
       <div>店舗名：{currentShop.shopName}</div>
