@@ -6,12 +6,15 @@ type Props = {
     src: string;
     alt: string;
   };
-  contents: ReactNode;
+  contents?: ReactNode;
 };
 export const Card = (props: Props) => {
   const { imgAttr, contents } = props;
   return (
-    <div className="flex items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-1">
+    <div
+      data-testid="card"
+      className="flex items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 mb-3 p-1"
+    >
       <Image
         className="object-cover rounded-t-lg w-1/3"
         src={imgAttr.src}
@@ -19,7 +22,10 @@ export const Card = (props: Props) => {
         width="200"
         height="200"
       ></Image>
-      <div className="object-cover rounded-t-lg w-2/3 ml-2">{contents}</div>
+
+      <div className="object-cover rounded-t-lg w-2/3 ml-2">
+        {contents ? contents : null}
+      </div>
     </div>
   );
 };
