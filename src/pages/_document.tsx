@@ -1,4 +1,4 @@
-import { useUtilityContext } from "@/context/utility";
+import { useUtilityContext } from "@/hooks/useUtility";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {

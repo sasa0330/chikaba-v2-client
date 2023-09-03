@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
-import { ShopProvider } from "@/context/shop";
+import { ShopProvider } from "@/hooks/useShop";
 import type { AppProps } from "next/app";
-import { UtilityProvider } from "@/context/utility";
+import { UtilityProvider } from "@/hooks/useUtility";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

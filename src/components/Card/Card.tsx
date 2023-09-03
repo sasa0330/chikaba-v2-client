@@ -16,6 +16,8 @@ export const Card = (props: Props) => {
         className="object-cover rounded-t-lg w-1/3"
         src={imgAttr.src}
         alt={imgAttr.alt}
+        width="200"
+        height="200"
       ></Image>
       <div className="object-cover rounded-t-lg w-2/3 ml-2">{contents}</div>
     </div>
